@@ -1,0 +1,35 @@
+import subprocess
+
+fg_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" fill="none">
+  <!-- Outer Compass Ring Subtle -->
+  <circle cx="216" cy="216" r="130" stroke="#2D7A5D" stroke-width="2.5" stroke-dasharray="5 8" opacity="0.6"/>
+  <circle cx="216" cy="216" r="115" stroke="#FFFFFF" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- 4 Cardinal Compass Diamonds -->
+  <polygon points="216,68 228,102 216,94 204,102" fill="#8AD6B4"/>
+  <polygon points="216,364 224,338 216,342 208,338" fill="#FFFFFF" opacity="0.4"/>
+  <polygon points="68,216 102,204 94,216 102,228" fill="#FFFFFF" opacity="0.4"/>
+  <polygon points="364,216 330,204 338,216 330,228" fill="#FFFFFF" opacity="0.4"/>
+
+  <!-- Master Center Symbol: 2D Sacred Kaaba Cube -->
+  <!-- Top Facet (White/Light Silver) -->
+  <polygon points="216,130 280,166 216,202 152,166" fill="#FFFFFF"/>
+  <!-- Left Facet (Deep Contrast Dark) -->
+  <polygon points="152,166 216,202 216,286 152,250" fill="#E2E8F0"/>
+  <!-- Right Facet (Midtone Silver Shadow) -->
+  <polygon points="216,202 280,166 280,250 216,286" fill="#CBD5E1"/>
+
+  <!-- Golden Kiswah Belt (Sacred Gold Ribbon) -->
+  <polygon points="152,182 216,218 216,230 152,194" fill="#E5B869"/>
+  <polygon points="216,218 280,182 280,194 216,230" fill="#D4A352"/>
+
+  <!-- Qibla Direction Beam Apex -->
+  <path d="M 216 104 L 226 124 L 216 118 L 206 124 Z" fill="#8AD6B4"/>
+</svg>
+"""
+
+with open("ic_foreground.svg", "w") as f:
+    f.write(fg_svg)
+
+subprocess.run(["rsvg-convert", "-w", "432", "-h", "432", "ic_foreground.svg", "-o", "composeApp/src/androidMain/res/drawable/ic_launcher_foreground.png"], check=True)
+print("Adaptive foreground generated!")
